@@ -4,17 +4,16 @@
 在一行中输入2个整数，分别表示lower和upper的值，中间用空格分开。
 输出格式:
 第一行输出："fahr celsius"
-接着每行输出一个华氏温度fahr（整型）与一个摄氏温度celsius（占据6个字符宽度，靠右对齐，保留1位小数）。
+接着每行输出一个华氏温度fahr（整型）与一个摄氏温度celsius（占据6个字符宽度，靠右对齐，保留1位小数）。只有摄氏温度输出占据6个字符，
 若输入的范围不合法，则输出"Invalid."。
 '''
 lower, upper = input().split()
 lower, upper = int(lower), int(upper)
-if lower > upper or upper > 100 or lower < 0:
+if lower <= upper and upper <= 100:
+    print("fahr celsius")
+    while lower <= upper:
+        result = 5 * (lower - 32) / 9.0
+        print("{:d}{:>6.1f}".format(lower, result))  # 只有摄氏温度输出占6个字符
+        lower += 2
+else:
     print("Invalid.")
-    exit(0)
-print("{:6}".format("fahr"), "{:6}".format("celsius"))
-for i in range(lower, upper + 1, 2):
-    data_str = str(5 * (i - 32) / 9).partition(".")
-    print(data_str[0] + data_str[1] + data_str[2][0])
-    print("{:6}".format(str(i)), data_str[0] + data_str[1] + data_str[2][0], end="")
-    print("  " + str(5 * (i - 32) / 9))
