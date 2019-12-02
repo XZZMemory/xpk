@@ -4,11 +4,11 @@ sum = 0
 flag = 1
 while a <= b:
     sum += a
-    print("{:6}".format(a), end="")
+    print("{:5}".format(a), end="")
     if flag % 5 == 0:
         print()
     flag += 1
     a += 1
-if flag % 5 != 0:
+if (flag - 1) % 5 != 0:
     print()
 print("Sum = " + str(sum))

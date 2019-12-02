@@ -8,10 +8,13 @@
 若输入的范围不合法，则输出"Invalid."。
 '''
 lower, upper = input().split()
-lower, upper = eval(lower), eval(upper)
-if lower > upper or upper > 100:
-    print("Invalid")
-    exit(1)
-mat = "{:6}\t{:.1f}"
-for i in range(lower, upper, 2):
-    print(mat.format(str(i), 5 * (i - 32) / 9))
+lower, upper = int(lower), int(upper)
+if lower > upper or upper > 100 or lower < 0:
+    print("Invalid.")
+    exit(0)
+print("{:6}".format("fahr"), "{:6}".format("celsius"))
+for i in range(lower, upper + 1, 2):
+    data_str = str(5 * (i - 32) / 9).partition(".")
+    print(data_str[0] + data_str[1] + data_str[2][0])
+    print("{:6}".format(str(i)), data_str[0] + data_str[1] + data_str[2][0], end="")
+    print("  " + str(5 * (i - 32) / 9))
